@@ -20,6 +20,7 @@ namespace FeedbackCollection.Models.Rpository
             try
             {
                 comment.MakeDate = System.DateTime.Now;
+                comment.CommentUniqueCode = Guid.NewGuid();
                 DbContext.Comments.Add(comment);
                 var result = DbContext.SaveChanges();
                 if (result > 0)
@@ -51,6 +52,7 @@ namespace FeedbackCollection.Models.Rpository
             try
             {
                 post.MakeDate = System.DateTime.Now;
+                post.PostUniqueCode = Guid.NewGuid();
                 DbContext.Posts.Add(post);
                 var result = DbContext.SaveChanges();
                 if (result > 0)
@@ -184,7 +186,7 @@ namespace FeedbackCollection.Models.Rpository
                                                        CommentName = comment.CommentName,
                                                        MadeBy = comment.MadeBy,
                                                        MakeDate = comment.MakeDate,
-                                                       LikeDislikeList = DbContext.LikeDislikes.Where(x => x.CommentUniqueCode == comment.CommentUniqueCode).ToList()
+                                                       LikeDislikeList = DbContext.LikeDislikes.Where(x => x.CommentUniqueCode == comment.CommentUniqueCode).FirstOrDefault()
                                                    }).ToList()
                                 }).ToList();
                 if (postList.Count > 0)
@@ -232,7 +234,7 @@ namespace FeedbackCollection.Models.Rpository
                                                        CommentName = comment.CommentName,
                                                        MadeBy = comment.MadeBy,
                                                        MakeDate = comment.MakeDate,
-                                                       LikeDislikeList = DbContext.LikeDislikes.Where(x => x.CommentUniqueCode == comment.CommentUniqueCode).ToList()
+                                                       LikeDislikeList = DbContext.LikeDislikes.Where(x => x.CommentUniqueCode == comment.CommentUniqueCode).FirstOrDefault()
                                                    }).ToList()
                                 }).ToList();
                 if (postList.Count > 0)

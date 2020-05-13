@@ -21,7 +21,7 @@ namespace FeedbackCollection.CustomPolicies
                 AllowAnyMethod = true,
                 AllowAnyHeader = true
             };
-            _policy.Origins.Add("http://localhost:25794");
+            _policy.Origins.Add("https://localhost:44308");
         }
         public Task<CorsPolicy> GetCorsPolicyAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {

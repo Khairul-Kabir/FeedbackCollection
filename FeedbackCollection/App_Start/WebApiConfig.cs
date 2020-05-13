@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Unity;
 using Unity.Lifetime;
 
@@ -17,6 +18,7 @@ namespace FeedbackCollection
             // Web API configuration and services
 
             //CORS configuration
+            EnableCorsAttribute corns = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors();
 
             //Configur Unity Container
@@ -33,6 +35,7 @@ namespace FeedbackCollection
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
+                //routeTemplate: "api/{controller}/{action}/{id}",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );

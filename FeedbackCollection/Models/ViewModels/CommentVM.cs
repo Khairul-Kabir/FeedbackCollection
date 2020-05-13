@@ -15,6 +15,6 @@ namespace FeedbackCollection.Models.ViewModels
         public System.DateTime MakeDate { get; set; }
         public string MadeBy { get; set; }
 
-        public List<LikeDislike> LikeDislikeList { get; set; }
+        public LikeDislike LikeDislikeList { get; set; }
     }
 }
